@@ -14,11 +14,7 @@
           </browser-window>
         </div>
         <div class="col-xs-6">
-          <span class="label label-default mac" @click="VueRouter(1)"> Main.js </span> &nbsp
-          <span class="label label-danger mac" @click="VueRouter(2)"> App.vue </span> &nbsp
-          <span class="label label-success mac" @click="VueRouter(3)"> page1.vue </span> &nbsp
-          <span class="label label-info mac" @click="VueRouter(4)"> page2.vue </span>
-
+          <file-view :vue-router="VueRouter"></file-view> <br>
           <codemirror :code="code" :options="editorOption"></codemirror>
 
         </div>
@@ -36,13 +32,15 @@ import app from './localStore/app.js'
 import page1 from './localStore/page1.js'
 import page2 from './localStore/page2.js'
 import vueRouterView from 'components/vueRouter/vueRouter'
+import fileView from 'components/vueRouter/file'
 export default {
   name: 'app',
   components: {
     EditorWindow,
     BrowserWindow,
     codemirror,
-    vueRouterView
+    vueRouterView,
+    fileView
   },
   data () {
     return {
