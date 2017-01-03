@@ -1,5 +1,7 @@
 # vuejs-tutorial
 
+![Logo](./sc.png)
+
 > A Vue.js project
 
 ## Build Setup
