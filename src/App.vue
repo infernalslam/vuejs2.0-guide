@@ -14,7 +14,7 @@
           </browser-window>
         </div>
         <div class="col-xs-6">
-          <file-view :vue-router="VueRouter"></file-view> <br>
+          <file-view :vue-router="VueRouter"></file-view>
           <codemirror :code="code" :options="editorOption"></codemirror>
 
         </div>
