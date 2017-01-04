@@ -27,12 +27,14 @@
 <script>
 import {EditorWindow, BrowserWindow} from 'vue-windows'
 import { codemirror } from 'vue-codemirror'
-import main from './localStore/main.js'
-import app from './localStore/app.js'
-import page1 from './localStore/page1.js'
-import page2 from './localStore/page2.js'
+import main from './localStore/vuerouter/main.js'
+import app from './localStore/vuerouter/app.js'
+import page1 from './localStore/vuerouter/page1.js'
+import page2 from './localStore/vuerouter/page2.js'
 import vueRouterView from 'components/vueRouter/vueRouter'
 import fileView from 'components/vueRouter/file'
+import option from './localStore/editorOption.js'
+
 export default {
   name: 'app',
   components: {
@@ -48,19 +50,7 @@ export default {
       code: main,
       urlVueRouter: 'http://localhost:8080',
       vueRouterShow: '',
-      editorOption: {
-        mode: 'text/javascript',
-        theme: 'seti',
-        tabSize: 2,
-        lineNumbers: false,
-        line: false,
-        keyMap: 'sublime',
-        extraKeys: { 'Ctrl': 'autocomplete' },
-        foldGutter: true,
-        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-        styleSelectedText: true,
-        highlightSelectionMatches: { showToken: /\w/, annotateScrollbar: true }
-      }
+      editorOption: option[0].editorOption
     }
   },
   methods: {
