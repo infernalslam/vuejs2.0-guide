@@ -9,9 +9,6 @@
         </ul>
       </div>
 
-      <!-- <div class="container">
-        <div class="row">{{ editorOption }} </div>
-      </div> -->
 
     <div class="container">
       <div class="row">
@@ -94,7 +91,6 @@ import page2 from './localStore/vuerouter/page2.js'
 import vueRouterView from 'components/vueRouter/vueRouter'
 import fileView from 'components/vueRouter/file'
 import option from './localStore/editorOption.js'
-// import dracula from './localStore/dracula.js'
 import store from './localStore/vuex/store.js'
 import fileViewVuex from 'components/vuex/file'
 import appVuex from './localStore/vuex/app'
@@ -103,21 +99,6 @@ import propsView from 'components/props/propsView'
 import propsApp from './localStore/props/app.js'
 import props from './localStore/props/props.js'
 import fileViewProps from 'components/props/file'
-
-window.addEventListener('scroll', scrollFunction)
-function scrollFunction () {
-  var side = document.body.scrollTop
-  if (side >= 0 && side <= 698) {
-    console.log(side)
-    console.log('Vuerouter')
-  } else if (side >= 699 && side <= 1500) {
-    console.log(side)
-    console.log('Vuex')
-  } else if (side >= 1754 && side <= 1756) {
-    console.log(side)
-    console.log('Props')
-  }
-}
 
 export default {
   name: 'app',
@@ -200,7 +181,8 @@ export default {
 #app {
     color: white;
     /*background-color: #151718;*/
-    background-color: #282a36;
+    /*background-color: #282a36;*/
+    background-color: #02082c;
 }
 .CodeMirror {
   height: auto !important;
