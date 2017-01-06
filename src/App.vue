@@ -1,5 +1,18 @@
 <template>
   <div id="app">
+
+      <div class="menu">
+        <ul class="nav nav-pills nav-stacked">
+          <li>Vue-Router</li>
+          <li>Vuex</li>
+          <li>Props</li>
+        </ul>
+      </div>
+
+      <!-- <div class="container">
+        <div class="row">{{ editorOption }} </div>
+      </div> -->
+
     <div class="container">
       <div class="row">
         <h1 class="mac"> Basic </h1> <h3 class="mac"> Vue-router </h3>
@@ -45,6 +58,29 @@
       </div>
     </div>
 
+
+    <div class="container">
+      <div class="row">
+        <h1 class="mac"> Basic </h1> <h3 class="mac"> Props </h3>
+        <!-- <h4 class="mac"> <a href="https://medium.com/@takkamonpob/vue2-0-vuex-%E0%B8%AB%E0%B8%A1%E0%B8%94%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%AB%E0%B8%B2%E0%B9%80%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B9%81%E0%B8%9B%E0%B8%A3-e710a3be6592#.afizegbc0"> Readmore... </a></h4> -->
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6">
+            <browser-window :url="urlProps">
+              <props-view :props-name="propsName"></props-view>
+            </browser-window>
+        </div>
+        <div class="col-xs-6">
+          <file-view-props :props="Props"> </file-view-props>
+          <codemirror :code="codeProps" :options="editorOption"></codemirror>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </template>
 
@@ -58,10 +94,30 @@ import page2 from './localStore/vuerouter/page2.js'
 import vueRouterView from 'components/vueRouter/vueRouter'
 import fileView from 'components/vueRouter/file'
 import option from './localStore/editorOption.js'
+// import dracula from './localStore/dracula.js'
 import store from './localStore/vuex/store.js'
 import fileViewVuex from 'components/vuex/file'
 import appVuex from './localStore/vuex/app'
 import vueXView from 'components/vuex/vuex'
+import propsView from 'components/props/propsView'
+import propsApp from './localStore/props/app.js'
+import props from './localStore/props/props.js'
+import fileViewProps from 'components/props/file'
+
+window.addEventListener('scroll', scrollFunction)
+function scrollFunction () {
+  var side = document.body.scrollTop
+  if (side >= 0 && side <= 698) {
+    console.log(side)
+    console.log('Vuerouter')
+  } else if (side >= 699 && side <= 1500) {
+    console.log(side)
+    console.log('Vuex')
+  } else if (side >= 1754 && side <= 1756) {
+    console.log(side)
+    console.log('Props')
+  }
+}
 
 export default {
   name: 'app',
@@ -72,18 +128,24 @@ export default {
     vueRouterView,
     fileView,
     fileViewVuex,
-    vueXView
+    vueXView,
+    propsView,
+    fileViewProps
   },
   data () {
     return {
-      headText: 'Vue-router',
       codeVueRouter: main,
       codeVuex: store,
+      codeProps: propsApp,
       urlVueRouter: 'http://localhost:8080',
       urlVuex: 'http://localhost:8080',
+      urlProps: 'http://localhost:8080',
+      propsName: '',
       vueRouterShow: '',
       editorOption: option[0].editorOption,
-      number: 0
+      number: 0,
+      color: 'white',
+      bg: '#151718'
     }
   },
   methods: {
@@ -113,6 +175,13 @@ export default {
     },
     addNum () {
       this.number += 1
+    },
+    Props (index) {
+      if (index === 1) {
+        this.codeProps = propsApp
+      } else if (index === 2) {
+        this.codeProps = props
+      }
     }
   }
 }
@@ -128,9 +197,10 @@ export default {
 .mac {
     font-family: "San Francisco"
 }
-body {
+#app {
     color: white;
-    background-color: #151718;
+    /*background-color: #151718;*/
+    background-color: #282a36;
 }
 .CodeMirror {
   height: auto !important;
@@ -140,6 +210,7 @@ body {
 }
 .label {
   cursor: pointer !important;
+  font-size: 26px;
 }
 
 .textinbrowser {
@@ -149,4 +220,13 @@ a:focus, a:hover {
     color: #cfcebf !important;
     text-decoration: underline !important;
 }
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9400;
+  width: 100px;
+  background: #3d505b;
+}
+
 </style>

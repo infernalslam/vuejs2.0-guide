@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="app">
+  <div class="app">
     <img src="./../../assets/logo.png" width="50" height="50">
     <h1> {{ number }} </h1> <br>
     <button @click="addNum()">+</button> <br>
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-#app {
+.app {
 font-family: 'Avenir', Helvetica, Arial, sans-serif;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
